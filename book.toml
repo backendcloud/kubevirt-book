@@ -1,0 +1,13 @@
+[book]
+authors = ["hanwei"]
+language = "en"
+multilingual = false
+src = "src"
+title = "KubeVirt源码分析"
+
+[output.html]
+additional-css = ["style.css"]
+additional-js = ["sidebar.js"]
+
+
+# [output.pdf]
