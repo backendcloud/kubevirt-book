@@ -1,5 +1,5 @@
 
-![](/images/kubevirt-tekton-1/1.png)
+![](2022-07-25-19-27-52.png)
 
 ```bash
 [developer@localhost taskruns]$ cat create-vm-from-manifest-taskrun.yaml 

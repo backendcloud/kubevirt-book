@@ -316,10 +316,10 @@ spec:
 ```
 
 kubectl get svc -A 查看vnc service nodeport的端口是32041，用vnc客户端登录
-![](/images/k8s-vnc-win10/5475ed45.png)
+![](2022-07-25-19-28-36.png)
 发现连不上，查了之后才知道，上面部署的vnc服务提供的这个ip+port不是某一个vm的vnc的端口，而是web界面，web上展示所有虚拟机的nvc入口链接。如下：
-![](/images/k8s-vnc-win10/ffdb87c4.png)
+![](2022-07-25-19-28-51.png)
 登录win10虚拟机的vnc界面
-![](/images/k8s-vnc-win10/c1815ef6.png)
+![](2022-07-25-19-28-58.png)
 登录环境中的另一台cirros虚拟机的vnc界面
-![](/images/k8s-vnc-win10/cc3485aa.png)
+![](2022-07-25-19-29-07.png)
