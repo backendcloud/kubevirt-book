@@ -3,6 +3,27 @@
 Kubevirt 是Redhat开源的以容器方式运行虚拟机的项目，以k8s add-on方式，利用k8s CRD为增加资源类型VirtualMachineInstance（VMI）， 使用容器的image registry去创建虚拟机并提供VM生命周期管理。 CRD的方式是的kubevirt对虚拟机的管理不局限于pod管理接口，但是也无法使用pod的RS DS Deployment等管理能力，也意味着 kubevirt如果想要利用pod管理能力，要自主去实现，目前kubevirt实现了类似RS的功能。 kubevirt目前支持的runtime是docker和runv。
 
 
+# Stack
+
+* KubeVirt
+* Orchestration (K8s)
+* Scheduling (K8s)
+* Container Runtime
+* Operating System
+* Virtual
+* Physical
+
+由于分层的设计，可以实现用户对虚拟化服务的调用 Virtualization API 转到 向 Kubernetes 集群 申请 虚拟化所需的 调度Scheduling， 网络networking， 存储storage， 这些功能的实现都交给 Kubernetes。
+
+对虚拟化的实现，通过和libevirt qemu kvm打交道实现。
+
+# Kubernetes Plus
+
+KubeVirt 给Kubernetes集群增加虚拟机相关的功能，包括：
+* 虚拟机管理
+* 容器内部的虚拟机的网络管理
+* 虚拟化功能的 REST API
+
 # 基本组件
 
 * virt-api: 
@@ -13,8 +34,8 @@ Kubevirt 是Redhat开源的以容器方式运行虚拟机的项目，以k8s add-
   * 以 Daemonset 形式部署，功能类似于 Kubelet，通过 Watch 本机 VMI 和实例资源，管理本宿主机上所有虚机实例；
   * 主要执行动作如下:
     * 使 VMI 中定义的 Spec 与相应的 libvirt （本地 socket 通信）保持同步;
-    * 汇报及控制更新虚拟机状态;
-    * 调用相关插件初始化节点上网络和存储资源;
+    * 向集群汇报及控制更新虚拟机状态;
+    * 调用相关节点级的插件初始化节点上网络和存储资源;
     * 热迁移相关操作;
 * virt-launcher: 
   * Kubevirt 会为每一个 VMI 对象创建一个 Pod，该 Pod 的主进程为 virt-launcher，virt-launcher 的 Pod 提供了 cgroups 和 namespaces 的隔离，virt-launcher 为虚拟机实例的主进程。
