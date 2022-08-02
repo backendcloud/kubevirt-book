@@ -43,9 +43,6 @@ KubeVirt 给Kubernetes集群增加虚拟机相关的功能，包括：
   * 如果 Kubernetes 运行时在 VMI 退出之前尝试关闭 virt-launcher 容器，virt-launcher 会将信号从Kubernetes 转发到 VMI 进程，并尝试推迟容器的终止，直到 VMI 成功关闭。
 
 
-# virt-launcher 与 libvirt 通信概略图
-![](2022-07-25-17-24-01.png)
-
 
 # 资源对象
 Kubevirt 是 Kubernetes 的虚拟机管理插件，通过自定义控制器和资源实现对虚拟机的管理功能，通过自定义资源(CRD)机制，同时 Kubevirt 可以自定义额外的操作，来调整常规容器中不可用的行为。这里介绍几个关键资源：
