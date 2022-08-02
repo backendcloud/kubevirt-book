@@ -2,6 +2,7 @@
 
 - [overview]()
   - [简介](./overview/intro.md)
+  - [KubeVirt和其他技术对比](./overview/technology-comparison.md)
   - [K8S的常见四种自动化部署方式](./overview/k8s-4-deploy.md) 
   - [部署 Kubernetes + KubeVirt](./overview/deploy-kubevirt.md)
   - [KubeVirt的基本使用](./overview/basic-use.md)
